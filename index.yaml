@@ -14,6 +14,16 @@ entries:
   besticon:
   - apiVersion: v2
     appVersion: v3.13.0
+    created: "2022-03-09T11:48:49.484239693Z"
+    description: A Helm chart for Kubernetes
+    digest: 78f7597559844e410b1ebbe5426dad0354d9fd12dde5afb1d6a38fbc3b2b61ae
+    name: besticon
+    type: application
+    urls:
+    - https://github.com/fcecagno/helm-charts/releases/download/besticon-0.1.1/besticon-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: v3.13.0
     created: "2022-03-09T05:08:53.171388174Z"
     description: A Helm chart for Kubernetes
     digest: 397b1586fff12cbdf8434f6934f4bf202fe0e55ac69d8d2535c01059dfe8dd48
@@ -88,4 +98,4 @@ entries:
     urls:
     - https://github.com/fcecagno/helm-charts/releases/download/workadventure-0.1.0/workadventure-0.1.0.tgz
     version: 0.1.0
-generated: "2022-03-09T05:12:32.301332941Z"
+generated: "2022-03-09T11:48:49.484270593Z"
