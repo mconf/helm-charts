@@ -1,27 +1,47 @@
 apiVersion: v1
 entries:
-  workadventure:
+  back:
   - apiVersion: v2
     appVersion: v1.8.4
-    created: "2022-03-09T13:00:15.898130433Z"
-    dependencies:
-    - name: front
-      repository: https://mconf.github.io/helm-charts
-      version: 0.1.0
-    - name: back
-      repository: https://mconf.github.io/helm-charts
-      version: 0.1.0
-    - name: pusher
-      repository: https://mconf.github.io/helm-charts
-      version: 0.1.0
-    - name: besticon
-      repository: https://mconf.github.io/helm-charts
-      version: 0.1.1
+    created: "2022-03-09T13:04:28.706346957Z"
     description: A Helm chart for Kubernetes
-    digest: c4b47a36ead49eb229c0fa817ac459deb5fb6bdfe6b62ad3250abc5ee765be49
-    name: workadventure
+    digest: ca6bede1d62ced4beb528fa968b5b1038383f660c4274b0d52eb7dd65026b25f
+    name: back
     type: application
     urls:
-    - https://github.com/mconf/helm-charts/releases/download/workadventure-0.1.3/workadventure-0.1.3.tgz
-    version: 0.1.3
-generated: "2022-03-09T13:00:15.898140433Z"
+    - https://github.com/mconf/helm-charts/releases/download/back-0.1.1/back-0.1.1.tgz
+    version: 0.1.1
+  besticon:
+  - apiVersion: v2
+    appVersion: v3.13.0
+    created: "2022-03-09T13:04:28.819506547Z"
+    description: A Helm chart for Kubernetes
+    digest: 067d8801fe7bbeb61f3e5257586156b735d1ee9d776ec6ee2a4dfcd9b3a355e6
+    name: besticon
+    type: application
+    urls:
+    - https://github.com/mconf/helm-charts/releases/download/besticon-0.1.2/besticon-0.1.2.tgz
+    version: 0.1.2
+  front:
+  - apiVersion: v2
+    appVersion: v1.8.4
+    created: "2022-03-09T13:04:28.957167109Z"
+    description: A Helm chart for Kubernetes
+    digest: 3282d9a06a0000807652abd4180de7fab74e222e32c82368b08ba6806f643e8a
+    name: front
+    type: application
+    urls:
+    - https://github.com/mconf/helm-charts/releases/download/front-0.1.1/front-0.1.1.tgz
+    version: 0.1.1
+  pusher:
+  - apiVersion: v2
+    appVersion: v1.8.4
+    created: "2022-03-09T13:04:29.088963447Z"
+    description: A Helm chart for Kubernetes
+    digest: 6286b8805aabe95c7eae3d68e270df9efbab964b464b5a7fca37c24abe189a6a
+    name: pusher
+    type: application
+    urls:
+    - https://github.com/mconf/helm-charts/releases/download/pusher-0.1.1/pusher-0.1.1.tgz
+    version: 0.1.1
+generated: "2022-03-09T13:04:29.088972847Z"
