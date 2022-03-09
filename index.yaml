@@ -1,5 +1,49 @@
 apiVersion: v1
 entries:
+  back:
+  - apiVersion: v2
+    appVersion: v1.8.4
+    created: "2022-03-09T05:08:53.060004417Z"
+    description: A Helm chart for Kubernetes
+    digest: 398c43da4398a275bf6cd552a513dcd5d20ef7e95be1298959ac8ef556eda30e
+    name: back
+    type: application
+    urls:
+    - https://github.com/fcecagno/helm-charts/releases/download/back-0.1.0/back-0.1.0.tgz
+    version: 0.1.0
+  besticon:
+  - apiVersion: v2
+    appVersion: v3.13.0
+    created: "2022-03-09T05:08:53.171388174Z"
+    description: A Helm chart for Kubernetes
+    digest: 397b1586fff12cbdf8434f6934f4bf202fe0e55ac69d8d2535c01059dfe8dd48
+    name: besticon
+    type: application
+    urls:
+    - https://github.com/fcecagno/helm-charts/releases/download/besticon-0.1.0/besticon-0.1.0.tgz
+    version: 0.1.0
+  front:
+  - apiVersion: v2
+    appVersion: v1.8.4
+    created: "2022-03-09T05:08:53.286790952Z"
+    description: A Helm chart for Kubernetes
+    digest: 86b4bb00e129d0a0ddb907bb5becb840c624d372eb50d653f3581104f28936f8
+    name: front
+    type: application
+    urls:
+    - https://github.com/fcecagno/helm-charts/releases/download/front-0.1.0/front-0.1.0.tgz
+    version: 0.1.0
+  pusher:
+  - apiVersion: v2
+    appVersion: v1.8.4
+    created: "2022-03-09T05:08:53.399484116Z"
+    description: A Helm chart for Kubernetes
+    digest: 1f750c306f5561ba3b594d74c4915601f2745321ea0bb283b1f9614fb78a9c67
+    name: pusher
+    type: application
+    urls:
+    - https://github.com/fcecagno/helm-charts/releases/download/pusher-0.1.0/pusher-0.1.0.tgz
+    version: 0.1.0
   workadventure:
   - apiVersion: v2
     appVersion: v1.8.4
@@ -21,4 +65,4 @@ entries:
     urls:
     - https://github.com/fcecagno/helm-charts/releases/download/workadventure-0.1.0/workadventure-0.1.0.tgz
     version: 0.1.0
-generated: "2022-03-09T05:02:31.334941737Z"
+generated: "2022-03-09T05:08:53.506756653Z"
