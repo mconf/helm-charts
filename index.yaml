@@ -44,4 +44,28 @@ entries:
     urls:
     - https://github.com/mconf/helm-charts/releases/download/pusher-0.1.1/pusher-0.1.1.tgz
     version: 0.1.1
-generated: "2022-03-09T13:04:29.088972847Z"
+  workadventure:
+  - apiVersion: v2
+    appVersion: v1.8.4
+    created: "2022-03-09T13:14:18.417637431Z"
+    dependencies:
+    - name: front
+      repository: https://mconf.github.io/helm-charts
+      version: 0.1.1
+    - name: back
+      repository: https://mconf.github.io/helm-charts
+      version: 0.1.1
+    - name: pusher
+      repository: https://mconf.github.io/helm-charts
+      version: 0.1.1
+    - name: besticon
+      repository: https://mconf.github.io/helm-charts
+      version: 0.1.2
+    description: A Helm chart for Kubernetes
+    digest: cdd23c71631880f53e8194bce4eab764ab58801abbf858e8100ef645a78b4b5e
+    name: workadventure
+    type: application
+    urls:
+    - https://github.com/mconf/helm-charts/releases/download/workadventure-0.1.4/workadventure-0.1.4.tgz
+    version: 0.1.4
+generated: "2022-03-09T13:14:18.417649831Z"
