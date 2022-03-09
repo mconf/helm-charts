@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  workadventure:
+  - apiVersion: v2
+    appVersion: v1.8.4
+    created: "2022-03-09T04:49:22.092223858Z"
+    description: A Helm chart for Kubernetes
+    digest: 48bfc6f2f89325aad30348c1790e242bd0852e2788712c2315633ecff7a28b57
+    name: workadventure
+    type: application
+    urls:
+    - https://github.com/fcecagno/helm-charts/releases/download/workadventure-0.1.0/workadventure-0.1.0.tgz
+    version: 0.1.0
+generated: "2022-03-09T04:49:22.092275258Z"
