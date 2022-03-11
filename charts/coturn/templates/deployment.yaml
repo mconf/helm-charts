@@ -1,0 +1,82 @@
+{{- $portRange := untilStep (int .Values.ports.from) (int (add1 .Values.ports.to)) 1 -}}
+apiVersion: apps/v1
+kind: {{ .Values.kind }}
+metadata:
+  name: {{ include "coturn.fullname" . }}
+  labels:
+    {{- include "coturn.labels" . | nindent 4 }}
+spec:
+  {{- if eq .Values.kind "Deployment" }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "coturn.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+        # re-roll deployment on config change
+        checksum/coturn-config: {{ include (print $.Template.BasePath "/coturn/configmap.yaml") . | sha256sum }}
+      labels:
+        {{- include "coturn.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "coturn.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      {{- if eq .Values.kind "DaemonSet" }}
+      hostNetwork: true
+      {{- end }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          args: ["-c", "/turnserver.conf"]
+          ports:
+            - name: turn-3478
+              containerPort: 3478
+              protocol: UDP
+          {{- range $portRange }}
+            - name: turn-{{ . }}
+              containerPort: {{ . }}
+              {{- if eq $.Values.kind "DaemonSet" }}
+              hostPort: {{ . }}
+              {{- end }}
+              protocol: UDP
+          {{- end }}
+          volumeMounts:
+            - name: coturn-config
+              mountPath: /turnserver.conf
+              subPath: turnserver.conf
+              readOnly: true
+            - name: var-tmp
+              mountPath: /var/tmp
+          securityContext:
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      volumes:
+        - name: coturn-config
+          configMap:
+            name: {{ include "coturn.fullname" . }}-config
+        - name: var-tmp
+          emptyDir: {}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

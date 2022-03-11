@@ -1,0 +1,119 @@
+# Default values for coturn.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: instrumentisto/coturn
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: false
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext:
+  runAsUser: 1000
+  runAsGroup: 1000
+
+securityContext:
+  capabilities:
+    drop:
+      - ALL
+  readOnlyRootFilesystem: true
+  allowPrivilegeEscalation: false
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: chart-example.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+# URIs of the Coturn servers
+# If deploying Coturn with this chart, include the public IPs of each node in your cluster (or a DNS round-robin hostname)
+# You can also include an external Coturn instance if you'd prefer
+uris: []
+#  - "turn:turn.example.com?transport=udp"
+
+# How to deploy Coturn
+# Options:
+#   DaemonSet:  A DaemonSet will be used to schedule one Coturn pod per node. Each Coturn pod will open the ports it needs directly on the host it is scheduled on.
+#               This maximizes compatibility and will allow you to set up Coturn without any additional cluster configuration.
+#   Deployment: A Deployment will be used to schedule Coturn pods. The number of Coturn pods will be configurable (via the replicaCount setting below).
+#               You will need to use a NodePort service or an external load balancer to route traffic to the Coturn pods.
+#               This is more flexible and can use fewer pods in a multi-node setup, but will require additional networking configuration.
+kind: DaemonSet
+
+# Whether to allow guests to use the TURN server
+allowGuests: true
+
+# Shared secret for communication between Synapse and Coturn.
+# Optional, will be auto-generated if not overridden here.
+sharedSecret: ""
+
+# UDP port range for TURN connections
+ports:
+  from: 49152
+  to: 49172
+
+service:
+  # The type of service to deploy for routing Coturn traffic
+  # Options:
+  #   ClusterIP: Recommended for DaemonSet configurations. This will create a standard Kubernetes service for Coturn within the cluster. No external networking
+  #              will be configured as the DaemonSet will handle binding to each Node's host networking
+  #   NodePort:  Recommended for Deployment configurations. This will open TURN ports on every node and route traffic on these ports to the Coturn pods.
+  #              You will need to make sure your cloud provider supports the cluster config setting "apiserver.service-node-port-range", as this range must contain
+  #              the ports defined above for the service to be created.
+  type: ClusterIP
+
+# Coturn specific labels
+labels:
+  component: coturn

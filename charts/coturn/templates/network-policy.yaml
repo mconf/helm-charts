@@ -1,0 +1,14 @@
+{{- if .Values.coturn.enabled }}
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: {{ include "coturn.fullname" . }}
+  labels:
+{{ include "coturn.labels" . | indent 4 }}
+spec:
+  podSelector:
+    matchLabels:
+      {{- include "coturn.selectorLabels" . | nindent 6 }}
+  policyTypes:
+    - Ingress
+{{- end }}
