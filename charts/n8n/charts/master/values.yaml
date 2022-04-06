@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: n8nio/n8n:0.164.1
+  repository: n8nio/n8n
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
@@ -15,8 +15,18 @@ nameOverride: ""
 fullnameOverride: ""
 
 env:
-  #N8N_DISABLE_PRODUCTION_MAIN_PROCESS: true
-  #N8N_SKIP_WEBHOOK_DEREGISTRATION_SHUTDOWN: true
+  QUEUE_BULL_REDIS_HOST: ""
+  QUEUE_BULL_REDIS_PORT: ""
+  N8N_BASIC_AUTH_ACTIVE: "true"
+  N8N_BASIC_AUTH_USER: ""
+  N8N_BASIC_AUTH_PASSWORD: ""
+  NODE_ENV: production
+  EXECUTIONS_MODE: "queue"
+  N8N_WEBHOOK_ACTIVE: "true"
+  N8N_LOG_LEVEL: "verbose"
+  N8N_LOG_OUTPUT: "console"
+  GENERIC_TIMEZONE: ""
+  WEBHOOK_TUNNEL_URL: ""
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -42,7 +52,7 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 80
+  port: 5678
 
 ingress:
   enabled: false
@@ -74,8 +84,8 @@ resources: {}
 
 autoscaling:
   enabled: false
-  minReplicas: 1
-  maxReplicas: 2
+  minReplicas: 2
+  maxReplicas: 4
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
