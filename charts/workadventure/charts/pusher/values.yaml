@@ -23,9 +23,11 @@ env:
   API_URL: "workadventure-back-ws:50051"
   CPU_OVERHEAT_THRESHOLD:
   DISABLE_ANONYMOUS: false
+  ENABLE_OPENAPI_ENDPOINT:
   FRONT_URL: "https://play.workadventure.local"
   JITSI_ISS:
   JITSI_URL:
+  NODE_ENV: production
   OPID_CLIENT_ID:
   OPID_CLIENT_ISSUER:
   OPID_CLIENT_REDIRECT_URL:

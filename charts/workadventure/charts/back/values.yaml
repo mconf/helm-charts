@@ -18,15 +18,17 @@ env:
   ADMIN_API_TOKEN:
   ADMIN_API_URL:
   ALLOW_ARTILLERY:
+  BBB_SECRET: 8cd8ef52e8e101574e400365b55e11a6
+  BBB_URL: "https://test-install.blindsidenetworks.com/bigbluebutton/"
   CPU_OVERHEAT_THRESHOLD:
   GROUP_RADIUS:
   GRPC_PORT:
   HTTP_PORT:
   JITSI_ISS:
   JITSI_URL: meet.jit.si
-  MAX_PER_GROUP: 4
-  MINIMUM_DISTANCE: 8
-  REDIS_HOST:
+  MAX_PER_GROUP:
+  MINIMUM_DISTANCE:
+  NODE_ENV: production
   REDIS_HOST: workadventure-redis-master
   REDIS_PASSWORD:
   REDIS_PORT: 6379
