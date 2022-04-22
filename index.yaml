@@ -44,6 +44,17 @@ entries:
     urls:
     - https://github.com/mconf/helm-charts/releases/download/front-0.1.1/front-0.1.1.tgz
     version: 0.1.1
+  pictshare:
+  - apiVersion: v2
+    appVersion: 6f540ad2
+    created: "2022-04-22T04:33:08.538538855Z"
+    description: A Helm chart for Kubernetes
+    digest: f3aec86265494daa1a1207bdef1b446515094cfe5de9561b7042ba773ad50f41
+    name: pictshare
+    type: application
+    urls:
+    - https://github.com/mconf/helm-charts/releases/download/pictshare-0.1.0/pictshare-0.1.0.tgz
+    version: 0.1.0
   pusher:
   - apiVersion: v2
     appVersion: v1.8.4
@@ -110,4 +121,4 @@ entries:
     urls:
     - https://github.com/mconf/helm-charts/releases/download/workadventure-0.1.4/workadventure-0.1.4.tgz
     version: 0.1.4
-generated: "2022-04-22T02:06:05.921086754Z"
+generated: "2022-04-22T04:33:08.538554156Z"
