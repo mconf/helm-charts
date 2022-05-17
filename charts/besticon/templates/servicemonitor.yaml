@@ -4,22 +4,25 @@ kind: ServiceMonitor
 metadata:
   name: {{ include "besticon.fullname" . }}
   labels:
+    {{- include "besticon.labels" . | nindent 4 }}
   {{- if .Values.prometheus.monitor.additionalLabels }}
     {{- toYaml .Values.prometheus.monitor.additionalLabels | nindent 4 }}
   {{- end }}
 spec:
   jobLabel: {{ default "app.kubernetes.io/name" .Values.prometheus.monitor.jobLabel }}
+  namespaceSelector:
+    matchNames:
+      - {{ .Release.Namespace }}
   selector:
-    matchLabels:
-    {{- if .Values.prometheus.monitor.selectorOverride }}
-      {{ toYaml .Values.prometheus.monitor.selectorOverride | indent 6 }}
-    {{ else }}
-      app: {{ include "besticon.name" . }}
-      release: {{ .Release.Name }}
-    {{- end }}
+    matchLabels: {{- include "besticon.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: metrics
   endpoints:
     - port: {{ .Values.service.portName }}
       scheme: {{ .Values.prometheus.monitor.scheme }}
+    {{- with .Values.prometheus.monitor.basicAuth }}
+      basicAuth:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
     {{- with .Values.prometheus.monitor.bearerTokenFile }}
       bearerTokenFile: {{ . }}
     {{- end }}
