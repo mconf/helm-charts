@@ -89,6 +89,23 @@ entries:
   workadventure:
   - apiVersion: v2
     appVersion: v1.10.1
+    created: "2022-05-19T20:47:47.798582099Z"
+    dependencies:
+    - name: besticon
+      repository: https://mconf.github.io/helm-charts
+      version: 0.1.5
+    - name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 16.8.7
+    description: A Helm chart for Kubernetes
+    digest: a659925df8ea2adc7632851f77d342dae9b9ee7ca95dee0071567ce858b374bc
+    name: workadventure
+    type: application
+    urls:
+    - https://github.com/mconf/helm-charts/releases/download/workadventure-0.3.4/workadventure-0.3.4.tgz
+    version: 0.3.4
+  - apiVersion: v2
+    appVersion: v1.10.1
     created: "2022-05-17T23:22:46.474526474Z"
     dependencies:
     - name: besticon
@@ -192,4 +209,4 @@ entries:
     urls:
     - https://github.com/mconf/helm-charts/releases/download/workadventure-0.1.4/workadventure-0.1.4.tgz
     version: 0.1.4
-generated: "2022-05-17T23:22:46.474757774Z"
+generated: "2022-05-19T20:47:47.798613199Z"
