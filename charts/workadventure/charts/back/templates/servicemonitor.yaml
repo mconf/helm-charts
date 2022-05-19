@@ -14,11 +14,17 @@ spec:
     matchNames:
       - {{ .Release.Namespace }}
   selector:
-    matchLabels: {{- include "back.selectorLabels" . | nindent 6 }}
-      app.kubernetes.io/component: metrics
+    matchLabels:
+    {{- if .Values.prometheus.monitor.selectorOverride }}
+      {{ toYaml .Values.prometheus.monitor.selectorOverride | indent 6 }}
+    {{ else }}
+      app: {{ include "back.fullname" . }}
+      release: {{ .Release.Name }}
+    {{- end }}
   endpoints:
     - port: {{ .Values.service.portName }}
       scheme: {{ .Values.prometheus.monitor.scheme }}
+      path: {{ .Values.prometheus.monitor.path }}
     {{- with .Values.prometheus.monitor.basicAuth }}
       basicAuth:
         {{- toYaml . | nindent 8 }}

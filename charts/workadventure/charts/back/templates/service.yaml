@@ -8,9 +8,9 @@ spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
-      targetPort: http
+      targetPort: {{ .Values.service.portName }}
       protocol: TCP
-      name: http
+      name: {{ .Values.service.portName }}
   selector:
     {{- include "back.selectorLabels" . | nindent 4 }}
 ---
@@ -24,8 +24,8 @@ spec:
   type: {{ .Values.serviceWs.type }}
   ports:
     - port: {{ .Values.serviceWs.port }}
-      targetPort: direct
+      targetPort: {{ .Values.serviceWs.portName }}
       protocol: TCP
-      name: direct
+      name: {{ .Values.serviceWs.portName }}
   selector:
     {{- include "back.selectorLabels" . | nindent 4 }}

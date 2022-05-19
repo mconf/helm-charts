@@ -66,6 +66,7 @@ securityContext: {}
 service:
   type: ClusterIP
   port: 80
+  portName: http
 
 ingress:
   enabled: false
@@ -92,6 +93,7 @@ prometheus:
     jobLabel: ""
 
     scheme: http
+    path: /metrics
     basicAuth: {}
     bearerTokenFile:
     tlsConfig: {}
