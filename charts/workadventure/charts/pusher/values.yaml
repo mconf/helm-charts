@@ -67,6 +67,7 @@ service:
   type: ClusterIP
   port: 80
   portName: http
+  additionalLabels: {}
 
 ingress:
   enabled: false
@@ -135,5 +136,3 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
-
-additionalLabels: {}

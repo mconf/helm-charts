@@ -4,6 +4,7 @@ metadata:
   name: {{ include "back.fullname" . }}
   labels:
     {{- include "back.labels" . | nindent 4 }}
+    {{- include "back.service.additionalLabels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -20,6 +21,7 @@ metadata:
   name: {{ include "back.fullname" . }}-ws
   labels:
     {{- include "back.labels" . | nindent 4 }}
+    {{- include "back.serviceWs.additionalLabels" . | nindent 4 }}
 spec:
   type: {{ .Values.serviceWs.type }}
   ports:

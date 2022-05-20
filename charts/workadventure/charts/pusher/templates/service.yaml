@@ -4,6 +4,7 @@ metadata:
   name: {{ include "pusher.fullname" . }}
   labels:
     {{- include "pusher.labels" . | nindent 4 }}
+    {{- include "pusher.service.additionalLabels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:

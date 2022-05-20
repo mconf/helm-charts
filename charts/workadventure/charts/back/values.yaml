@@ -62,11 +62,13 @@ service:
   type: ClusterIP
   port: 8080
   portName: http
+  additionalLabels: {}
 
 serviceWs:
   type: ClusterIP
   port: 50051
   portName: direct
+  additionalLabels: {}
 
 ingress:
   enabled: false
@@ -135,5 +137,3 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
-
-additionalLabels: {}

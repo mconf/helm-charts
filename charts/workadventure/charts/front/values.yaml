@@ -69,6 +69,7 @@ securityContext: {}
 service:
   type: ClusterIP
   port: 80
+  additionalLabels: {}
 
 ingress:
   enabled: false
@@ -110,5 +111,3 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
-
-additionalLabels: {}
