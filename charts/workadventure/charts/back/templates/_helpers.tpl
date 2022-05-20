@@ -36,6 +36,7 @@ Common labels
 {{- define "back.labels" -}}
 helm.sh/chart: {{ include "back.chart" . }}
 {{ include "back.selectorLabels" . }}
+{{ include "back.additionalLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}

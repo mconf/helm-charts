@@ -36,6 +36,7 @@ Common labels
 {{- define "pusher.labels" -}}
 helm.sh/chart: {{ include "pusher.chart" . }}
 {{ include "pusher.selectorLabels" . }}
+{{ include "pusher.additionalLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
