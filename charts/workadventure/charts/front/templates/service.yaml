@@ -4,7 +4,7 @@ metadata:
   name: {{ include "front.fullname" . }}
   labels:
     {{- include "front.labels" . | nindent 4 }}
-    {{- include "front.service.additionalLabels" . | nindent 4 }}
+    {{- toYaml .Values.service.additionalLabels | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
