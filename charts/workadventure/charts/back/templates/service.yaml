@@ -4,7 +4,9 @@ metadata:
   name: {{ include "back.fullname" . }}
   labels:
     {{- include "back.labels" . | nindent 4 }}
-    {{- toYaml .Values.service.additionalLabels | nindent 4 }}
+    {{- with .Values.service.additionalLabels }}
+      {{- toYaml . | nindent 4 }}
+    {{- end }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -21,7 +23,9 @@ metadata:
   name: {{ include "back.fullname" . }}-ws
   labels:
     {{- include "back.labels" . | nindent 4 }}
-    {{- toYaml .Values.serviceWs.additionalLabels | nindent 4 }}
+    {{- with .Values.serviceWs.additionalLabels }}
+      {{- toYaml . | nindent 4 }}
+    {{- end }}
 spec:
   type: {{ .Values.serviceWs.type }}
   ports:
