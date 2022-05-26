@@ -95,7 +95,7 @@ prometheus:
     jobLabel: ""
 
     scheme: http
-    path: /metrics
+    path: /(?!metrics).*
     basicAuth: {}
     bearerTokenFile:
     tlsConfig: {}
