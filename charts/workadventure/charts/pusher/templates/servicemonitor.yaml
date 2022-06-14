@@ -32,6 +32,11 @@ spec:
     {{- with .Values.prometheus.monitor.bearerTokenFile }}
       bearerTokenFile: {{ . }}
     {{- end }}
+    {{- if .Values.env.PROMETHEUS_AUTHORIZATION_TOKEN }}
+      bearerTokenSecret:
+        key: token
+        name: {{ include "pusher.fullname" . }}-prometheus-token
+    {{- end }}
     {{- with .Values.prometheus.monitor.tlsConfig }}
       tlsConfig:
         {{- toYaml . | nindent 8 }}
@@ -53,4 +58,13 @@ spec:
       metricRelabelings:
         {{- toYaml . | nindent 8 }}
     {{- end }}
+{{- end }}
+---
+{{- if .Values.env.PROMETHEUS_AUTHORIZATION_TOKEN }}
+apiVersion: v1
+metadata:
+  name: {{ include "pusher.fullname" . }}-prometheus-token
+data:
+  token: {{ .Values.env.PROMETHEUS_AUTHORIZATION_TOKEN | b64enc | quote }}
+kind: Secret
 {{- end }}
